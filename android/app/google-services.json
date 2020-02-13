@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "671562520605",
+    "firebase_url": "https://lotto-test-notifications.firebaseio.com",
+    "project_id": "lotto-test-notifications",
+    "storage_bucket": "lotto-test-notifications.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:671562520605:android:b86b53c56cecc2c0ab0ef4",
+        "android_client_info": {
+          "package_name": "com.lotto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "671562520605-igk1ftamvv643lvjjjbdc6j19naind19.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoElGZ2I85qDSmEJS3hRJtalP8_RtVcBc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "671562520605-igk1ftamvv643lvjjjbdc6j19naind19.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
