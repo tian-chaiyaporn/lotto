@@ -38,7 +38,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -53,5 +53,80 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NotoSansThai-Black.ttf</string>
+		<string>NotoSansThai-Bold.ttf</string>
+		<string>NotoSansThai-Condensed.ttf</string>
+		<string>NotoSansThai-CondensedBlack.ttf</string>
+		<string>NotoSansThai-CondensedBold.ttf</string>
+		<string>NotoSansThai-CondensedExtraBold.ttf</string>
+		<string>NotoSansThai-CondensedExtraLight.ttf</string>
+		<string>NotoSansThai-CondensedLight.ttf</string>
+		<string>NotoSansThai-CondensedMedium.ttf</string>
+		<string>NotoSansThai-CondensedSemiBold.ttf</string>
+		<string>NotoSansThai-CondensedThin.ttf</string>
+		<string>NotoSansThai-ExtraBold.ttf</string>
+		<string>NotoSansThai-ExtraCondensed.ttf</string>
+		<string>NotoSansThai-ExtraCondensedBlack.ttf</string>
+		<string>NotoSansThai-ExtraCondensedBold.ttf</string>
+		<string>NotoSansThai-ExtraCondensedExtraBold.ttf</string>
+		<string>NotoSansThai-ExtraCondensedExtraLight.ttf</string>
+		<string>NotoSansThai-ExtraCondensedLight.ttf</string>
+		<string>NotoSansThai-ExtraCondensedMedium.ttf</string>
+		<string>NotoSansThai-ExtraCondensedSemiBold.ttf</string>
+		<string>NotoSansThai-ExtraCondensedThin.ttf</string>
+		<string>NotoSansThai-ExtraLight.ttf</string>
+		<string>NotoSansThai-Light.ttf</string>
+		<string>NotoSansThai-Medium.ttf</string>
+		<string>NotoSansThai-Regular.ttf</string>
+		<string>NotoSansThai-SemiBold.ttf</string>
+		<string>NotoSansThai-SemiCondensed.ttf</string>
+		<string>NotoSansThai-SemiCondensedBlack.ttf</string>
+		<string>NotoSansThai-SemiCondensedBold.ttf</string>
+		<string>NotoSansThai-SemiCondensedExtraBold.ttf</string>
+		<string>NotoSansThai-SemiCondensedExtraLight.ttf</string>
+		<string>NotoSansThai-SemiCondensedLight.ttf</string>
+		<string>NotoSansThai-SemiCondensedMedium.ttf</string>
+		<string>NotoSansThai-SemiCondensedSemiBold.ttf</string>
+		<string>NotoSansThai-SemiCondensedThin.ttf</string>
+		<string>NotoSansThai-Thin.ttf</string>
+		<string>NotoSansThaiUI-Black.ttf</string>
+		<string>NotoSansThaiUI-Bold.ttf</string>
+		<string>NotoSansThaiUI-Condensed.ttf</string>
+		<string>NotoSansThaiUI-CondensedBlack.ttf</string>
+		<string>NotoSansThaiUI-CondensedBold.ttf</string>
+		<string>NotoSansThaiUI-CondensedExtraBold.ttf</string>
+		<string>NotoSansThaiUI-CondensedExtraLight.ttf</string>
+		<string>NotoSansThaiUI-CondensedLight.ttf</string>
+		<string>NotoSansThaiUI-CondensedMedium.ttf</string>
+		<string>NotoSansThaiUI-CondensedSemiBold.ttf</string>
+		<string>NotoSansThaiUI-CondensedThin.ttf</string>
+		<string>NotoSansThaiUI-ExtraBold.ttf</string>
+		<string>NotoSansThaiUI-ExtraCondensed.ttf</string>
+		<string>NotoSansThaiUI-ExtraCondensedBlack.ttf</string>
+		<string>NotoSansThaiUI-ExtraCondensedBold.ttf</string>
+		<string>NotoSansThaiUI-ExtraCondensedExtraBold.ttf</string>
+		<string>NotoSansThaiUI-ExtraCondensedExtraLight.ttf</string>
+		<string>NotoSansThaiUI-ExtraCondensedLight.ttf</string>
+		<string>NotoSansThaiUI-ExtraCondensedMedium.ttf</string>
+		<string>NotoSansThaiUI-ExtraCondensedSemiBold.ttf</string>
+		<string>NotoSansThaiUI-ExtraCondensedThin.ttf</string>
+		<string>NotoSansThaiUI-ExtraLight.ttf</string>
+		<string>NotoSansThaiUI-Light.ttf</string>
+		<string>NotoSansThaiUI-Medium.ttf</string>
+		<string>NotoSansThaiUI-Regular.ttf</string>
+		<string>NotoSansThaiUI-SemiBold.ttf</string>
+		<string>NotoSansThaiUI-SemiCondensed.ttf</string>
+		<string>NotoSansThaiUI-SemiCondensedBlack.ttf</string>
+		<string>NotoSansThaiUI-SemiCondensedBold.ttf</string>
+		<string>NotoSansThaiUI-SemiCondensedExtraBold.ttf</string>
+		<string>NotoSansThaiUI-SemiCondensedExtraLight.ttf</string>
+		<string>NotoSansThaiUI-SemiCondensedLight.ttf</string>
+		<string>NotoSansThaiUI-SemiCondensedMedium.ttf</string>
+		<string>NotoSansThaiUI-SemiCondensedSemiBold.ttf</string>
+		<string>NotoSansThaiUI-SemiCondensedThin.ttf</string>
+		<string>NotoSansThaiUI-Thin.ttf</string>
+	</array>
 </dict>
 </plist>
