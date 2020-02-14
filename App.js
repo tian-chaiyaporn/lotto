@@ -26,7 +26,9 @@ const App: () => React$Node = () => {
   useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       console.log('FCM Message Data:', remoteMessage.data);
- 
+      console.log('Lotto@test');
+      console.log('Lotto@testkey');
+
       // Update a users messages list using AsyncStorage
       const currentMessages = await AsyncStorage.getItem('messages');
       const messageArray = JSON.parse(currentMessages);
