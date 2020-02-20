@@ -15,14 +15,7 @@ const displayNumberStyles = StyleSheet.create({
     height: 80,
     marginTop: 18,
     paddingBottom: 10,
-    width: '50%',
-    alignItems: 'center',
-  },
-  bottomContainer: {
-    height: 80,
-    marginVertical: 25,
-    paddingBottom: 10,
-    width: '100%',
+    flex: 1,
     alignItems: 'center',
   },
   heading: {
@@ -61,11 +54,14 @@ const displayNumberStyles = StyleSheet.create({
   },
 });
 
-function FirstRowNumberDisplay({
+function IndividualResultDisplay({
   title = 'ไม่มีข้อมูล',
-  number = 'ไม่มีข้อมูล',
+  results = ['ไม่มีข้อมูล'],
   reward = 'ไม่มีข้อมูล',
 }) {
+  const displayResult = results.map(result => (
+    <Text style={displayNumberStyles.number}>{result}</Text>
+  ));
   return (
     <View style={displayNumberStyles.container}>
       <View style={displayNumberStyles.heading}>
@@ -73,51 +69,7 @@ function FirstRowNumberDisplay({
         <Text style={displayNumberStyles.headingText}>{title}</Text>
         <View style={displayNumberStyles.line} />
       </View>
-      <View style={displayNumberStyles.numberContainer}>
-        <Text style={displayNumberStyles.number}>{number}</Text>
-      </View>
-      <Text style={displayNumberStyles.reward}>{reward}</Text>
-    </View>
-  );
-}
-
-function SecondRowNumberDisplay({
-  title = 'ไม่มีข้อมูล',
-  firstNumber = 'ไม่มีข้อมูล',
-  secondNumber = 'ไม่มีข้อมูล',
-  reward = 'ไม่มีข้อมูล',
-}) {
-  return (
-    <View style={displayNumberStyles.container}>
-      <View style={displayNumberStyles.heading}>
-        <View style={displayNumberStyles.line} />
-        <Text style={displayNumberStyles.headingText}>{title}</Text>
-        <View style={displayNumberStyles.line} />
-      </View>
-      <View style={displayNumberStyles.numberContainer}>
-        <Text style={displayNumberStyles.number}>{firstNumber}</Text>
-        <Text style={displayNumberStyles.number}>{secondNumber}</Text>
-      </View>
-      <Text style={displayNumberStyles.reward}>{reward}</Text>
-    </View>
-  );
-}
-
-function BottomeRowNumberDisplay({
-  title = 'ไม่มีข้อมูล',
-  number = 'ไม่มีข้อมูล',
-  reward = 'ไม่มีข้อมูล',
-}) {
-  return (
-    <View style={displayNumberStyles.bottomContainer}>
-      <View style={displayNumberStyles.heading}>
-        <View style={displayNumberStyles.line} />
-        <Text style={displayNumberStyles.headingText}>{title}</Text>
-        <View style={displayNumberStyles.line} />
-      </View>
-      <View style={displayNumberStyles.numberContainer}>
-        <Text style={displayNumberStyles.number}>{number}</Text>
-      </View>
+      <View style={displayNumberStyles.numberContainer}>{displayResult}</View>
       <Text style={displayNumberStyles.reward}>{reward}</Text>
     </View>
   );
@@ -145,15 +97,15 @@ const buttonGroupStyles = StyleSheet.create({
   icon: {width: 24, height: 24},
 });
 
-function ButtonGroup() {
+function ButtonGroup({onPressCalendar, displayDate}) {
   return (
     <View style={buttonGroupStyles.container}>
-      <Text style={buttonGroupStyles.date}>1 กุมภาพันธ์ 63</Text>
+      <Text style={buttonGroupStyles.date}>{displayDate}</Text>
       <View style={buttonGroupStyles.buttonContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onPressCalendar}>
           <Image
             style={buttonGroupStyles.icon}
-            source={require('../../../../assets/refresh/glyphRegularRefresh.png')}
+            source={require('../../../../assets/calendar/calendar.png')}
           />
         </TouchableOpacity>
         <TouchableOpacity>
@@ -245,42 +197,43 @@ const cardStyles = StyleSheet.create({
   },
 });
 
-export function ResultCard() {
+export function ResultCard({onPressCalendar, displayDate}) {
   return (
     <View style={cardStyles.container}>
-      <ButtonGroup />
+      <ButtonGroup
+        onPressCalendar={onPressCalendar}
+        displayDate={displayDate}
+      />
       <Form />
-      <View style={{flexDirection: 'row', flex: 1}}>
-        <FirstRowNumberDisplay
+      <View style={{flexDirection: 'row'}}>
+        <IndividualResultDisplay
           title="สามตัวบน"
-          number="227"
+          results={['227']}
           reward="รางวัลละ 4,000 บาท"
         />
-        <FirstRowNumberDisplay
+        <IndividualResultDisplay
           title="เลขท้ายสองตัว"
-          number="06"
+          results={['60']}
           reward="รางวัลละ 2,000 บาท"
         />
       </View>
-      <View style={{flexDirection: 'row', flex: 1}}>
-        <SecondRowNumberDisplay
-          title="เลขหน้าสามตัว"
-          firstNumber="259"
-          secondNumber="552"
+      <View style={{flexDirection: 'row'}}>
+        <IndividualResultDisplay
+          title="เลขท้ายสองตัว"
+          results={['259', '552']}
           reward="รางวัลละ 4,000 บาท"
         />
-        <SecondRowNumberDisplay
-          title="เลขท้ายสามตัว"
-          firstNumber="323"
-          secondNumber="123"
+        <IndividualResultDisplay
+          title="เลขท้ายสองตัว"
+          results={['323', '123']}
           reward="รางวัลละ 4,000 บาท"
         />
       </View>
-      <View style={{flex: 1, width: '100%'}}>
-        <BottomeRowNumberDisplay
+      <View style={{flexDirection: 'row'}}>
+        <IndividualResultDisplay
           title="เลขท้ายสองตัว"
-          number="06"
-          reward="รางวัลละ 2,000 บาท"
+          results={['06']}
+          reward="รางวัลละ 4,000 บาท"
         />
       </View>
     </View>

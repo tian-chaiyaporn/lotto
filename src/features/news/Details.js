@@ -1,19 +1,15 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import ImageLoad from 'react-native-image-placeholder';
-
 import {
-  SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
   Text,
-  StatusBar,
-  AsyncStorage,
   Image,
   TouchableOpacity,
 } from 'react-native';
 
-import {primary, secondary, light} from '../../constants/colors';
+import {primary} from '../../constants/colors';
 
 export const DetailsScreen = ({navigation}) => {
   const DATA = {
@@ -31,20 +27,10 @@ Affiliate marketing is the latest trend online. With so many products to sell an
 The easy way to earn from affiliate marketing is to join an affiliate marketing network. Joining poses several benefits to both the advertiser and the affiliate.`,
   };
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: light,
-      }}>
-      <View
-        style={{
-          backgroundColor: primary,
-          alignItems: 'center',
-          paddingVertical: 12,
-          width: '100%',
-        }}>
+    <View style={styles.container}>
+      <View style={styles.topBar}>
         <TouchableOpacity
-          style={{position: 'absolute', left: 12, top: 18}}
+          style={styles.backButton}
           onPress={() => navigation.goBack()}>
           <Image source={require('../../../assets/back_arrow/back.png')} />
         </TouchableOpacity>
@@ -52,24 +38,62 @@ The easy way to earn from affiliate marketing is to join an affiliate marketing 
       </View>
       <ScrollView>
         <ImageLoad
-          style={{width: '100%', height: 250}}
+          style={styles.image}
           isShowActivity={false}
           source={{uri: 'https://placedog.net/400/250'}}
           placeholderSource={require('../../../assets/defaultNews/defaultNewsThumbnail3x.png')}
-          placeholderStyle={{width: '100%', height: 250}}
+          placeholderStyle={styles.image}
         />
-        <View style={{padding: 20, paddingBottom: 100}}>
-          <Text style={{fontFamily: 'NotoSansThaiUI-Bold', fontSize: 18, color: primary}}>
-            {DATA.title}
-          </Text>
-          <Text style={{fontFamily: 'NotoSansThaiUI-SemiBold', fontSize: 14, color: 'grey'}}>
-            {DATA.date}
-          </Text>
-          <Text style={{fontFamily: 'NotoSansThaiUI-Regular', fontSize: 16, paddingVertical: 20}}>
-            {DATA.body}
-          </Text>
+        <View style={styles.text}>
+          <Text style={styles.title}>{DATA.title}</Text>
+          <Text style={styles.date}>{DATA.date}</Text>
+          <Text style={styles.textBody}>{DATA.body}</Text>
         </View>
       </ScrollView>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  topBar: {
+    backgroundColor: primary,
+    alignItems: 'center',
+    paddingVertical: 12,
+    width: '100%',
+  },
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  backButton: {position: 'absolute', left: 12, top: 18},
+  image: {width: '100%', height: 250},
+  text: {padding: 20, paddingBottom: 100},
+  title: {fontFamily: 'NotoSansThaiUI-Bold', fontSize: 18, color: primary},
+  date: {fontFamily: 'NotoSansThaiUI-SemiBold', fontSize: 14, color: 'grey'},
+  textBody: {
+    fontFamily: 'NotoSansThaiUI-Regular',
+    fontSize: 16,
+    paddingVertical: 20,
+  },
+  itemContainer: {
+    flexDirection: 'row',
+    padding: 10,
+    borderBottomColor: '#eaeaec',
+    borderBottomWidth: 1,
+  },
+  item: {
+    backgroundColor: '#f9c2ff',
+    paddingVertical: 5,
+    paddingHorizontal: 25,
+    marginVertical: 10,
+    marginHorizontal: 5,
+    borderRadius: 15,
+    height: 30,
+  },
+  list: {
+    backgroundColor: 'white',
+    width: '100%',
+    position: 'relative',
+    flex: 1,
+  },
+});

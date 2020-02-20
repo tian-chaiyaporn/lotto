@@ -1,9 +1,7 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, Component} from 'react';
+import VideoPlayer from 'react-native-video-player';
 
 import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
   View,
   Text,
   StatusBar,
@@ -13,23 +11,44 @@ import {
 
 import {primary, secondary, light} from '../../constants/colors';
 
-export const LiveScreen = () => {
-  return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: light,
-      }}>
+export class LiveScreen extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      video: {width: undefined, height: undefined, duration: undefined},
+      thumbnailUrl: undefined,
+      videoUrl: undefined,
+    };
+  }
+
+  render() {
+    return (
       <View
         style={{
-          backgroundColor: primary,
-          alignItems: 'center',
-          paddingVertical: 12,
-          width: '100%'
+          flex: 1,
+          backgroundColor: light,
         }}>
-        <Image source={require('../../../assets/brand.png')} />
+        <View
+          style={{
+            backgroundColor: primary,
+            alignItems: 'center',
+            paddingVertical: 12,
+            width: '100%',
+          }}>
+          <Image source={require('../../../assets/brand.png')} />
+        </View>
+        <View style={{ backgroundColor: 'black', width: '100%' }}>
+          <VideoPlayer
+            video={{uri: 'https://www.radiantmediaplayer.com/media/bbb-360p.mp4'}}
+            videoWidth={500}
+            videoHeight={280}
+            ref={r => (this.player = r)}
+            onBuffer={this.onBuffer}
+            onError={this.videoError}
+          />
+        </View>
       </View>
-      <Text>ถ่ายทอดสด</Text>
-    </View>
-  );
-};
+    );
+  }
+}

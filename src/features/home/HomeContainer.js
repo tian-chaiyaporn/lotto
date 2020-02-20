@@ -1,6 +1,13 @@
 import React from 'react';
-
-import {StyleSheet, View, Text, FlatList, TouchableOpacity, Image} from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import {
+  StyleSheet,
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 
 import {primary, bordeaux, light} from '../../constants/colors';
 import {ResultCard} from './components/ResultCard';
@@ -72,14 +79,49 @@ const styles = StyleSheet.create({
     backgroundColor: primary,
     alignItems: 'center',
     paddingVertical: 12,
-    width: '100%'
+    width: '100%',
   },
 });
 
 export const HomeScreen = () => {
-  // add id of item once we get the data from backend of the list of countries
   const [selected, setSelected] = React.useState('ไทย');
+  const [showDatePicker, setShowDatePicker] = React.useState(false);
+  const [selectedDate, setDate] = React.useState(new Date());
   const onSelect = title => setSelected(title);
+
+  const onSetDate = (event, date) => {
+    setShowDatePicker(false);
+    if (event.type === 'set') {
+      setDate(date);
+    }
+  };
+
+  const convertToThaiDate = date => {
+    const thmonth = [
+      'มกราคม',
+      'กุมภาพันธ์',
+      'มีนาคม',
+      'เมษายน',
+      'พฤษภาคม',
+      'มิถุนายน',
+      'กรกฎาคม',
+      'สิงหาคม',
+      'กันยายน',
+      'ตุลาคม',
+      'พฤศจิกายน',
+      'ธันวาคม',
+    ];
+    return (
+      date.getDate() +
+      ' ' +
+      thmonth[date.getMonth()] +
+      ' ' +
+      (date.getYear() + 543).toString().slice(-2)
+    );
+  };
+
+  const thaiDate = convertToThaiDate(selectedDate);
+
   return (
     <View style={styles.container}>
       <View style={styles.topBar}>
@@ -99,8 +141,24 @@ export const HomeScreen = () => {
         )}
         keyExtractor={item => item.id}
       />
+      {showDatePicker && (
+        <DateTimePicker
+          value={selectedDate}
+          mode="date"
+          is24Hour={true}
+          display="default"
+          onChange={onSetDate}
+          locale="th-TH"
+        />
+      )}
       <View style={styles.cardSection}>
-        <ResultCard />
+        <ResultCard
+          displayDate={thaiDate}
+          onPressCalendar={() => setShowDatePicker(!showDatePicker)}
+          onPressRefresh={() => {
+            console.log('refresh');
+          }}
+        />
       </View>
     </View>
   );

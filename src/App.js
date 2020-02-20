@@ -1,6 +1,9 @@
 import React, {useEffect} from 'react';
 import messaging from '@react-native-firebase/messaging';
 import 'react-native-gesture-handler';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux'
+
 import {
   StyleSheet,
   View,
@@ -40,6 +43,19 @@ function NewsStackScreen() {
   );
 }
 
+function counter(state = 0, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + 1;
+    case 'DECREMENT':
+      return state - 1;
+    default:
+      return state;
+  }
+}
+
+let store = createStore(counter);
+
 const App = () => {
   useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
@@ -55,66 +71,67 @@ const App = () => {
   }, []);
 
   return (
-    <SafeAreaView style={styles.appContainer}>
-      <NavigationContainer>
-        <StatusBar barStyle="light-content" backgroundColor={primary} />
-        {/* <View style={styles.topBar}>
-          <Image source={require('../assets/brand.png')} />
-        </View> */}
-        <Tab.Navigator
-          screenOptions={({route}) => ({
-            tabBarIcon: ({focused}) => {
-              const homeIcon = (
-                <Image
-                  source={require('../assets/textDoc_white/textDoc.png')}
-                />
-              );
-              const homeIconFilled = (
-                <Image
-                  source={require('../assets/textDoc_filled/textDoc.png')}
-                />
-              );
-              const liveIcon = (
-                <Image source={require('../assets/camera/camera.png')} />
-              );
-              const liveIconFilled = (
-                <Image source={require('../assets/camera_filled/camera.png')} />
-              );
-              const newsIcon = (
-                <Image
-                  source={require('../assets/alertBubble/alertBubble.png')}
-                />
-              );
-              const newsIconFilled = (
-                <Image
-                  source={require('../assets/alertBubble_filled/alertBubble.png')}
-                />
-              );
-              if (route.name === 'ผลสลาก') {
-                return !focused ? homeIcon : homeIconFilled;
-              } else if (route.name === 'ถ่ายทอดสด') {
-                return !focused ? liveIcon : liveIconFilled;
-              } else if (route.name === 'ข่าวสาร') {
-                return !focused ? newsIcon : newsIconFilled;
-              }
-              return <Image source={require('../assets/brand.png')} />;
-            },
-          })}
-          tabBarOptions={{
-            activeTintColor: secondary,
-            labelStyle: styles.labelStyle,
-            tabStyle: {
-              paddingTop: 10,
-              height: 60,
-            },
-            style: styles.tabBarStyle,
-          }}>
-          <Tab.Screen name="ผลสลาก" component={HomeScreen} />
-          <Tab.Screen name="ถ่ายทอดสด" component={LiveScreen} />
-          <Tab.Screen name="ข่าวสาร" component={NewsStackScreen} />
-        </Tab.Navigator>
-      </NavigationContainer>
-    </SafeAreaView>
+    <Provider store={store}>
+      <SafeAreaView style={styles.appContainer}>
+        <NavigationContainer>
+          <StatusBar barStyle="light-content" backgroundColor={primary} />
+          <Tab.Navigator
+            screenOptions={({route}) => ({
+              tabBarIcon: ({focused}) => {
+                const homeIcon = (
+                  <Image
+                    source={require('../assets/textDoc_white/textDoc.png')}
+                  />
+                );
+                const homeIconFilled = (
+                  <Image
+                    source={require('../assets/textDoc_filled/textDoc.png')}
+                  />
+                );
+                const liveIcon = (
+                  <Image source={require('../assets/camera/camera.png')} />
+                );
+                const liveIconFilled = (
+                  <Image
+                    source={require('../assets/camera_filled/camera.png')}
+                  />
+                );
+                const newsIcon = (
+                  <Image
+                    source={require('../assets/alertBubble/alertBubble.png')}
+                  />
+                );
+                const newsIconFilled = (
+                  <Image
+                    source={require('../assets/alertBubble_filled/alertBubble.png')}
+                  />
+                );
+                if (route.name === 'ผลสลาก') {
+                  return !focused ? homeIcon : homeIconFilled;
+                } else if (route.name === 'ถ่ายทอดสด') {
+                  return !focused ? liveIcon : liveIconFilled;
+                } else if (route.name === 'ข่าวสาร') {
+                  return !focused ? newsIcon : newsIconFilled;
+                }
+                return <Image source={require('../assets/brand.png')} />;
+              },
+            })}
+            tabBarOptions={{
+              activeTintColor: secondary,
+              labelStyle: styles.labelStyle,
+              tabStyle: {
+                paddingTop: 10,
+                height: 60,
+              },
+              style: styles.tabBarStyle,
+            }}>
+            <Tab.Screen name="ผลสลาก" component={HomeScreen} />
+            <Tab.Screen name="ถ่ายทอดสด" component={LiveScreen} />
+            <Tab.Screen name="ข่าวสาร" component={NewsStackScreen} />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </SafeAreaView>
+    </Provider>
   );
 };
 

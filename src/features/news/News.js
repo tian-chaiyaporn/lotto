@@ -1,13 +1,10 @@
 import React, {useState} from 'react';
 import ImageLoad from 'react-native-image-placeholder';
 import {
-  SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
   Text,
   FlatList,
-  AsyncStorage,
   Image,
   TouchableOpacity,
 } from 'react-native';
@@ -92,14 +89,7 @@ const DATA = [
 
 function Item({id, title, thumbnail, date, onPress}) {
   return (
-    <TouchableOpacity
-      style={{
-        flexDirection: 'row',
-        padding: 10,
-        borderBottomColor: '#eaeaec',
-        borderBottomWidth: 1,
-      }}
-      onPress={onPress}>
+    <TouchableOpacity style={styles.itemContainer} onPress={onPress}>
       <View style={{borderRadius: 16, overflow: 'hidden'}}>
         <ImageLoad
           style={{width: 60, height: 60}}
@@ -127,14 +117,8 @@ function Item({id, title, thumbnail, date, onPress}) {
 export const NewsScreen = ({navigation}) => {
   const onPress = () => navigation.navigate('NewsDetails');
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: light,
-      }}>
-      <View style={styles.topBar}>        
+    <View style={styles.container}>
+      <View style={styles.topBar}>
         <Image source={require('../../../assets/brand.png')} />
       </View>
       <FlatList
@@ -160,13 +144,19 @@ const styles = StyleSheet.create({
     backgroundColor: primary,
     alignItems: 'center',
     paddingVertical: 12,
-    width: '100%'
+    width: '100%',
   },
   container: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: light,
-    flex: 1,
+  },
+  itemContainer: {
+    flexDirection: 'row',
+    padding: 10,
+    borderBottomColor: '#eaeaec',
+    borderBottomWidth: 1,
   },
   item: {
     backgroundColor: '#f9c2ff',
@@ -177,20 +167,10 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     height: 30,
   },
-  title: {
-    fontSize: 14,
-    fontFamily: 'NotoSansThaiUI-Bold',
-  },
   list: {
     backgroundColor: 'white',
     width: '100%',
     position: 'relative',
     flex: 1,
-  },
-  cardSection: {
-    flex: 10,
-    backgroundColor: light,
-    width: '100%',
-    marginTop: 20,
   },
 });
